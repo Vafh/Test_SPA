@@ -8,7 +8,7 @@ function App() {
     <Suspense fallback="...Loading">
       <Navigation />
       <Routes>
-        {mainRoutes.map(({ path, exact, component }) => (
+        {mainRoutes.map(({ path, component }) => (
           <Route key="path" path={path} element={component} />
         ))}
       </Routes>
