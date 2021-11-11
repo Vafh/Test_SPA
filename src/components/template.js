@@ -8,9 +8,9 @@ const Template = () => {
   };
 
   const beforeMaskedValueChange = (newState, oldState, userInput) => {
-    var { value } = newState;
-    var selection = newState.selection;
-    var cursorPosition = selection ? selection.start : null;
+    let { value } = newState;
+    let selection = newState.selection;
+    let cursorPosition = selection ? selection.start : null;
 
     // keep minus if entered by user
     if (value.endsWith("-") && userInput !== "-" && !value.endsWith("-")) {
