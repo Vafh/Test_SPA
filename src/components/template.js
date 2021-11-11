@@ -1,29 +1,19 @@
-import React from "react";
-
+import React, { useState } from "react";
 import InputMask from "react-input-mask";
 
-class Input extends React.Component {
-  state = {
-    value: "",
+const Template = () => {
+  const [value, setValue] = useState("");
+  const onChange = (event) => {
+    setValue(event.target.value);
   };
 
-  onChange = (event) => {
-    this.setState({
-      value: event.target.value,
-    });
-  };
-
-  beforeMaskedValueChange = (newState, oldState, userInput) => {
+  const beforeMaskedValueChange = (newState, oldState, userInput) => {
     var { value } = newState;
     var selection = newState.selection;
     var cursorPosition = selection ? selection.start : null;
 
     // keep minus if entered by user
-    if (
-      value.endsWith("-") &&
-      userInput !== "-" &&
-      !this.state.value.endsWith("-")
-    ) {
+    if (value.endsWith("-") && userInput !== "-" && !value.endsWith("-")) {
       if (cursorPosition === value.length) {
         cursorPosition--;
         selection = { start: cursorPosition, end: cursorPosition };
@@ -36,18 +26,16 @@ class Input extends React.Component {
       selection,
     };
   };
+  return (
+    <InputMask
+      mask="+380 (99) 999-99-99"
+      maskChar={null}
+      value={value}
+      onChange={onChange}
+      required
+      beforeMaskedValueChange={beforeMaskedValueChange}
+    />
+  );
+};
 
-  render() {
-    return (
-      <InputMask
-        mask="+380 (99) 999-99-99"
-        maskChar={null}
-        value={this.state.value}
-        onChange={this.onChange}
-        required
-        beforeMaskedValueChange={this.beforeMaskedValueChange}
-      />
-    );
-  }
-}
-export default Input;
+export default Template;
