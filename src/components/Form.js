@@ -19,7 +19,7 @@ const Form = () => {
         <input
           type="password"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Пароль может состоять только на латинице. Например: qwerty QweRTy"
+          title="Неправильный номер телефона или пароль"
           required
         />
       </label>
